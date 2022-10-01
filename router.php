@@ -16,16 +16,13 @@ $Bcontroller = new BestiarioController();
 
 $parse = explode('/',$action);
 switch($parse[0]){
-    case 'home':
-        $Bcontroller->getHome();
-        break;
     case 'list':
         $Bcontroller->getList();
         break;
     case 'insert':
         $Bcontroller->insertList();
         break;
-    case 'form':
+    case 'admin':
         $Bcontroller->getPrivateForm();
         break;
     case 'delete':

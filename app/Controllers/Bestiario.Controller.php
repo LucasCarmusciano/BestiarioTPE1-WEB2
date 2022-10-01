@@ -1,7 +1,7 @@
 <?php
 require_once './app/Models/Model.Categoria.php';
 require_once './app/Models/Model.Monstruo.php';
-require_once './app/Views/Monstruo.View.php';
+require_once './app/Views/View.php';
 
 class BestiarioController {
     private $model;
@@ -27,7 +27,7 @@ class BestiarioController {
     }
     
     public function getPrivateForm(){
-        $this->view->showPrivateForm();
+        $this->view->showAdminForm();
     }
 
     public function getFilterList(){
