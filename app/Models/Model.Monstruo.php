@@ -7,7 +7,9 @@
         }
 
         public function getList(){
-            $query = $this->db->prepare('SELECT * FROM Monstruo');
+            $query = $this->db->prepare('SELECT Monstruo.nombre, Monstruo.debilidad, Monstruo.descripcion, Categoria.nombre as nombre2
+                                         FROM Monstruo
+                                         INNER JOIN Categoria ON (Monstruo.id_Categoria_fk=Categoria.id)');
             $query->execute();
             return $query->fetchAll(PDO::FETCH_OBJ);
         }

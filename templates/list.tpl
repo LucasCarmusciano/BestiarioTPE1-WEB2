@@ -4,7 +4,6 @@
 <table class='table'>
     <thead>
         <tr>
-            <th scope="col">ID</td>
             <th scope="col">Nombre</td>
             <th scope="col">Debilidad</td>
             <th scope="col">Descripcion</td>
@@ -14,11 +13,10 @@
     {foreach from=$list item=$monster}
         <tbody>
             <tr>
-                <th scope="row">{$monster->id}</td>
-                <td>{$monster->nombre}</td>
+                <th scope="row">{$monster->nombre}</td>
                 <td>{$monster->debilidad}</td>
                 <td>{$monster->descripcion}</td>
-                <td>{$monster->id_Categoria_fk}</td>
+                <td>{$monster->nombre2}</td>
                 <td>
                     <form action="deleteMonster/{$monster->id}" method="POST">
                     <button type="submit">Borrar</button>
