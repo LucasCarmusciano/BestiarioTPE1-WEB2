@@ -17,7 +17,8 @@ class View {
             $this->smarty->display('listCategories.tpl');
         }
 
-        public function showAdminForm(){
+        public function showAdminForm($categories){
+            $this->smarty->assign('categories',$categories);
             $this->smarty->display('form.tpl');
         }
     }

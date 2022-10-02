@@ -40,7 +40,8 @@ class BestiarioController {
     }
     
     public function getPrivateForm(){
-        $this->view->showAdminForm();
+        $list = $this->modelCategoria->getList();
+        $this->view->showAdminForm($list);
     }
 
     // public function getFilterList(){

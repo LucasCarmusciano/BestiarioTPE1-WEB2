@@ -8,6 +8,7 @@
             <th scope="col">Debilidad</td>
             <th scope="col">Descripcion</td>
             <th scope="col">Categoria</td>
+            <th scope="col"></td>
         </tr>
     </thead>
     {foreach from=$list item=$monster}

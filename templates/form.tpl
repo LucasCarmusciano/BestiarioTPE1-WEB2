@@ -15,9 +15,9 @@
     </div>
     <select name="categoria" class="form-select" aria-label="Default select example">
         <option selected>-Categoria-</option>
-        <option value="1">Bestia</option>
-        <option value="2">Maldito</option>
-        <option value="3">Draconito</option>
+            {foreach from=$categories item=$categoria}
+                <option value={$categoria->id}>{$categoria->nombre}</option>
+            {/foreach}
     </select>
     <div class="d-grid gap-2 col-6 mx-auto">
         <button class="btn btn-primary" type="submit">Enviar</button>
