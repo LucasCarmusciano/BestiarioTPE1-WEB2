@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 
-<form action="insert" method="post">
+<form action="insertMonster" method="post">
     <div class="mb-3">
         <label class="form-label">Nombre</label>
         <input class="form-control" id="exampleFormControlInput1" name="nombre">
@@ -22,6 +22,21 @@
     <div class="d-grid gap-2 col-6 mx-auto">
         <button class="btn btn-primary" type="submit">Enviar</button>
         <a class="btn btn-primary" type="button" href="list">Ver lista</a>
+    </div>
+</form>
+
+<form action="insertCategories" method="post">
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input class="form-control" id="exampleFormControlInput1" name="nombre">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Descripcion</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" rows="3"></textarea>
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" type="submit">Enviar</button>
+        <a class="btn btn-primary" type="button" href="categories">Ver categorias</a>
     </div>
 </form>
 

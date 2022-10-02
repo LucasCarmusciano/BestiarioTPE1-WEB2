@@ -2,7 +2,7 @@
 require_once './app/Controllers/Bestiario.Controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
-
+define('BASE_URL_CAT', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/categories');
 
 if($_GET['action']==''){
     // $action='home';
@@ -19,14 +19,23 @@ switch($parse[0]){
     case 'list':
         $Bcontroller->getList();
         break;
-    case 'insert':
-        $Bcontroller->insertList();
+    case 'insertMonster':
+        $Bcontroller->insertMonsterList();
+        break;
+    case 'insertCategories':
+        $Bcontroller->insertCategoriesList();
         break;
     case 'admin':
         $Bcontroller->getPrivateForm();
         break;
-    case 'delete':
-        $Bcontroller->deleteList($parse[1]);
+    case 'deleteMonster':
+        $Bcontroller->deleteMonsterList($parse[1]);
+        break;
+    case 'deleteCategorie':
+        $Bcontroller->deleteCategoriesList($parse[1]);
+        break;
+    case 'categories':
+        $Bcontroller->getCategoriesList();
         break;
     default:
         echo('404 Page not found');

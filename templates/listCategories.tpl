@@ -6,21 +6,17 @@
         <tr>
             <th scope="col">ID</td>
             <th scope="col">Nombre</td>
-            <th scope="col">Debilidad</td>
             <th scope="col">Descripcion</td>
-            <th scope="col">Categoria</td>
         </tr>
     </thead>
-    {foreach from=$list item=$monster}
+    {foreach from=$list item=$categoria}
         <tbody>
             <tr>
-                <th scope="row">{$monster->id}</td>
-                <td>{$monster->nombre}</td>
-                <td>{$monster->debilidad}</td>
-                <td>{$monster->descripcion}</td>
-                <td>{$monster->id_Categoria_fk}</td>
+                <th scope="row">{$categoria->id}</td>
+                <td>{$categoria->nombre}</td>
+                <td>{$categoria->descripcion}</td>
                 <td>
-                    <form action="deleteMonster/{$monster->id}" method="POST">
+                    <form action="deleteCategorie/{$categoria->id}" method="POST">
                     <button type="submit">Borrar</button>
                     </form>
                 </td>

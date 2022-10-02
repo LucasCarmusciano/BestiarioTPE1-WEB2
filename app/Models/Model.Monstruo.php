@@ -18,7 +18,7 @@
         }
         
         public function deleteList($id){
-            $query = $this->db->prepare('DELETE FROM Monstruo where id= ? ');
+            $query = $this->db->prepare('DELETE FROM Monstruo where id= (?) ');
             $query->execute([$id]);
         }
         
