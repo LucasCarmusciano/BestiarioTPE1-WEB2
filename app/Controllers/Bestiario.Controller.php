@@ -18,8 +18,13 @@ class BestiarioController {
         $this->view->showMonsterList($list);
     }
     public function getCategoriesList(){
-        $list = $this->modelCategoria->getList();
-        $this->view->showCategoriesList($list);
+        $listCategoria = $this->modelCategoria->getList();
+        $arrCounts = array();
+        foreach ($listCategoria as $categoria) {
+            $filterList = $this->modelMonstruo->getFilterList($categoria->id);
+            $arrCounts[$categoria->id] = count($filterList);
+        }
+        $this->view->showCategoriesList($listCategoria, $arrCounts);
     }
 
     public function insertMonsterList(){
@@ -44,10 +49,9 @@ class BestiarioController {
         $this->view->showAdminForm($list);
     }
 
-    // public function getFilterList(){
-    //     $edadMayor = $_REQUEST['edadMayor'];
-    //     $FilterList = $this->modelMonstruo->getFilterList($edadMayor);
-    //     $this->view->showList($FilterList);
+    // public function getFilterList($id_Categoria_fk){
+    //     $FilterList = $this->modelMonstruo->getFilterList($id_Categoria_fk);
+    //     return $FilterList;
     // }
 
     public function deleteMonsterList($id){

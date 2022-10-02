@@ -7,7 +7,7 @@
         }
 
         public function getList(){
-            $query = $this->db->prepare('SELECT Monstruo.nombre, Monstruo.debilidad, Monstruo.descripcion, Categoria.nombre as nombre2
+            $query = $this->db->prepare('SELECT Monstruo.id, Monstruo.nombre, Monstruo.debilidad, Monstruo.descripcion, Categoria.nombre as nombre2
                                          FROM Monstruo
                                          INNER JOIN Categoria ON (Monstruo.id_Categoria_fk=Categoria.id)');
             $query->execute();
@@ -25,8 +25,8 @@
         }
         
         public function getFilterList($id_Categoria_fk){
-            $query = $this->db->prepare('SELECT * FROM Monstruo WHERE id_Categoria_fk ='.$$id_Categoria_fk);
-            $query->execute();
+            $query = $this->db->prepare('SELECT * FROM Monstruo WHERE id_Categoria_fk = (?)');
+            $query->execute([$id_Categoria_fk]);
             return $query->fetchAll(PDO::FETCH_OBJ);
         }
     }

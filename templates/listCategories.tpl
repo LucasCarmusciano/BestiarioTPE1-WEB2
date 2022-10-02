@@ -1,27 +1,16 @@
 {include file="header.tpl"}
 
+<ul class="list-group">
+{foreach from=$listCategoria item=$categoria key=$key}
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    {$categoria->nombre}
+    <form action="deleteCategorie/{$categoria->id}" method="POST">
+        <span class="badge bg-primary rounded-pill">{$arrCounts[$categoria->id]}</span>
+        <button type="submit">Borrar</button>
+    </form>
+  </li>
+{/foreach}
+</ul>
 
-<table class='table'>
-    <thead>
-        <tr>
-            <th scope="col">Nombre</td>
-            <th scope="col">Descripcion</td>
-            <th scope="col"></td>
-        </tr>
-    </thead>
-    {foreach from=$list item=$categoria}
-        <tbody>
-            <tr>
-                <th scope="row">{$categoria->nombre}</td>
-                <td>{$categoria->descripcion}</td>
-                <td>
-                    <form action="deleteCategorie/{$categoria->id}" method="POST">
-                    <button type="submit">Borrar</button>
-                    </form>
-                </td>
-            </tr>
-        </tbody>
-    {/foreach}
-</table>
 
 {include file="footer.tpl"}
