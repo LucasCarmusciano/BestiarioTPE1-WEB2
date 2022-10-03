@@ -17,14 +17,19 @@ class BestiarioController {
         $list = $this->modelMonstruo->getList();
         $this->view->showMonsterList($list);
     }
-    public function getCategoriesList(){
+    public function getAdminList(){
         $listCategoria = $this->modelCategoria->getList();
+        $listMonster = $this->modelMonstruo->getList();
         $arrCounts = array();
         foreach ($listCategoria as $categoria) {
             $filterList = $this->modelMonstruo->getFilterList($categoria->id);
             $arrCounts[$categoria->id] = count($filterList);
         }
-        $this->view->showCategoriesList($listCategoria, $arrCounts);
+        $this->view->showAdminList($listCategoria, $arrCounts, $listMonster);
+    }
+    public function getCategoriesList(){
+        $listCategoria = $this->modelCategoria->getList();
+        $this->view->showCategoriesList($listCategoria);
     }
 
     public function insertMonsterList(){

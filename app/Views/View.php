@@ -12,9 +12,15 @@ class View {
             $this->smarty->assign('list',$list);
             $this->smarty->display('list.tpl');
         }
-        public function showCategoriesList($listCategoria, $arrCounts){
+        public function showAdminList($listCategoria, $arrCounts, $listMonster){
             $this->smarty->assign('listCategoria',$listCategoria);
+            $this->smarty->assign('listMonster',$listMonster);
             $this->smarty->assign('arrCounts', $arrCounts);
+            $this->smarty->display('listAdmin.tpl');
+        }
+
+        public function showCategoriesList($listCategoria){
+            $this->smarty->assign('listCategoria',$listCategoria);
             $this->smarty->display('listCategories.tpl');
         }
 

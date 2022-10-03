@@ -40,8 +40,11 @@ switch($parse[0]){
     case 'categories':
         $Bcontroller->getCategoriesList();
         break;
-    case 'inspectCategorie':
+    case 'categories':
         $Bcontroller->getCategoriesList();
+        break;
+    case 'admin':
+        $Bcontroller->getAdminList();
         break;
     default:
         echo('404 Page not found');
