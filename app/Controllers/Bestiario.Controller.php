@@ -44,9 +44,12 @@ class BestiarioController {
         header("Location: " . BASE_URL_CAT); 
     }
     
-    public function getPrivateForm(){
+    public function getAdminAddMonster(){
         $list = $this->modelCategoria->getList();
-        $this->view->showAdminForm($list);
+        $this->view->showAdminAddMonster($list);
+    }
+    public function getAdminAddCategorie(){
+        $this->view->showAdminAddCategorie();
     }
 
     // public function getFilterList($id_Categoria_fk){

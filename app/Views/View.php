@@ -18,9 +18,13 @@ class View {
             $this->smarty->display('listCategories.tpl');
         }
 
-        public function showAdminForm($categories){
+        public function showAdminAddMonster($categories){
             $this->smarty->assign('categories',$categories);
-            $this->smarty->display('form.tpl');
+            $this->smarty->display('formMonster.tpl');
+        }
+
+        public function showAdminAddCategorie(){
+            $this->smarty->display('formCategorie.tpl');
         }
     }
 ?>

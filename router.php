@@ -25,8 +25,11 @@ switch($parse[0]){
     case 'insertCategories':
         $Bcontroller->insertCategoriesList();
         break;
-    case 'admin':
-        $Bcontroller->getPrivateForm();
+    case 'addMonster':
+        $Bcontroller->getAdminAddMonster();
+        break;
+    case 'addCategorie':
+        $Bcontroller->getAdminAddCategorie();
         break;
     case 'deleteMonster':
         $Bcontroller->deleteMonsterList($parse[1]);
@@ -35,6 +38,9 @@ switch($parse[0]){
         $Bcontroller->deleteCategoriesList($parse[1]);
         break;
     case 'categories':
+        $Bcontroller->getCategoriesList();
+        break;
+    case 'inspectCategorie':
         $Bcontroller->getCategoriesList();
         break;
     default:
