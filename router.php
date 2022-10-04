@@ -38,10 +38,11 @@ switch($parse[0]){
         $Bcontroller->deleteCategoriesList($parse[1]);
         break;
     case 'categories':
-        $Bcontroller->getCategoriesList();
-        break;
-    case 'categories':
-        $Bcontroller->getCategoriesList();
+        if($parse[1]==''){
+            $Bcontroller->getCategoriesList();
+        }else{
+        $Bcontroller->getFilterList($parse[1]);
+        }
         break;
     case 'admin':
         $Bcontroller->getAdminList();

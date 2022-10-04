@@ -57,10 +57,10 @@ class BestiarioController {
         $this->view->showAdminAddCategorie();
     }
 
-    // public function getFilterList($id_Categoria_fk){
-    //     $FilterList = $this->modelMonstruo->getFilterList($id_Categoria_fk);
-    //     return $FilterList;
-    // }
+    public function getFilterList($nombreCategoria){
+        $FilterList = $this->modelMonstruo->getFilterList($nombreCategoria);
+        $this->view->showMonsterList($FilterList);
+    }
 
     public function deleteMonsterList($id){
         $this->modelMonstruo->deleteList($id);

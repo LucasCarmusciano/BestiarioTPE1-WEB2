@@ -24,9 +24,10 @@
             $query->execute([$id]);
         }
         
-        public function getFilterList($id_Categoria_fk){
-            $query = $this->db->prepare('SELECT * FROM Monstruo WHERE id_Categoria_fk = (?)');
-            $query->execute([$id_Categoria_fk]);
+        public function getFilterList($nombreCategoria){
+            $query = $this->db->prepare('SELECT Monstruo.* FROM Monstruo
+                                         INNER JOIN Categoria ON Monstruo.id_Categoria_fk=Categoria.id WHERE Categoria.nombre = (?)');
+            $query->execute([$nombreCategoria]);
             return $query->fetchAll(PDO::FETCH_OBJ);
         }
     }
