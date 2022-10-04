@@ -25,7 +25,7 @@
         }
         
         public function getFilterList($nombreCategoria){
-            $query = $this->db->prepare('SELECT Monstruo.* FROM Monstruo
+            $query = $this->db->prepare('SELECT  Monstruo.id, Monstruo.nombre, Monstruo.debilidad, Monstruo.descripcion, Categoria.nombre as nombre2 FROM Monstruo
                                          INNER JOIN Categoria ON Monstruo.id_Categoria_fk=Categoria.id WHERE Categoria.nombre = (?)');
             $query->execute([$nombreCategoria]);
             return $query->fetchAll(PDO::FETCH_OBJ);

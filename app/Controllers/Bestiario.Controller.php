@@ -22,7 +22,7 @@ class BestiarioController {
         $listMonster = $this->modelMonstruo->getList();
         $arrCounts = array();
         foreach ($listCategoria as $categoria) {
-            $filterList = $this->modelMonstruo->getFilterList($categoria->id);
+            $filterList = $this->modelMonstruo->getFilterList($categoria->nombre);
             $arrCounts[$categoria->id] = count($filterList);
         }
         $this->view->showAdminList($listCategoria, $arrCounts, $listMonster);
