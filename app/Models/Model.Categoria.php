@@ -21,5 +21,16 @@
             $query = $this->db->prepare('DELETE FROM Categoria where id= (?) ');
             $query->execute([$id]);
         }
+
+        public function updateCategorie($nombre, $descripcion, $id){
+            $query = $this->db->prepare('UPDATE Categoria SET nombre=?, descripcion=? WHERE id=?');
+            $query->execute([$nombre, $descripcion, $id]);
+        }
+
+        public function inspectCategorie($id){
+            $query = $this->db->prepare('SELECT * FROM Categoria WHERE id = (?)');
+            $query->execute([$id]);
+            return $query->fetchAll(PDO::FETCH_OBJ);
+        }
     }
 ?>

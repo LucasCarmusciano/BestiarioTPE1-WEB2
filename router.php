@@ -3,6 +3,8 @@ require_once './app/Controllers/Bestiario.Controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 define('BASE_URL_CAT', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/categories');
+define('BASE_URL_ADMIN', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/admin');
+
 
 if($_GET['action']==''){
     // $action='home';
@@ -26,10 +28,10 @@ switch($parse[0]){
         $Bcontroller->insertCategoriesList();
         break;
     case 'addMonster':
-        $Bcontroller->getAdminAddMonster();
+        $Bcontroller->getAddMonster();
         break;
     case 'addCategorie':
-        $Bcontroller->getAdminAddCategorie();
+        $Bcontroller->getAddCategorie();
         break;
     case 'deleteMonster':
         $Bcontroller->deleteMonsterList($parse[1]);
@@ -46,6 +48,18 @@ switch($parse[0]){
         break;
     case 'admin':
         $Bcontroller->getAdminList();
+        break;
+    case 'updateMonster':
+        $Bcontroller->getUpdateMonster($parse[1]);
+        break;
+    case 'updateCategorie':
+        $Bcontroller->getUpdateCategorie($parse[1]);
+        break;
+    case 'actualizaMonstruo':
+        $Bcontroller->actualizaMonstruo($parse[1]);
+        break;
+    case 'actualizaCategoria':
+        $Bcontroller->actualizaCategoria($parse[1]);
         break;
     default:
         echo('404 Page not found');

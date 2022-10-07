@@ -49,11 +49,11 @@ class BestiarioController {
         header("Location: " . BASE_URL_CAT); 
     }
     
-    public function getAdminAddMonster(){
+    public function getAddMonster(){
         $list = $this->modelCategoria->getList();
         $this->view->showAdminAddMonster($list);
     }
-    public function getAdminAddCategorie(){
+    public function getAddCategorie(){
         $this->view->showAdminAddCategorie();
     }
 
@@ -64,10 +64,48 @@ class BestiarioController {
 
     public function deleteMonsterList($id){
         $this->modelMonstruo->deleteList($id);
-        header("Location: " . BASE_URL); 
+        header("Location: " . BASE_URL_ADMIN); 
     }
     public function deleteCategoriesList($id){
         $this->modelCategoria->deleteList($id);
+        header("Location: " . BASE_URL_ADMIN); 
+    }
+
+    public function getUpdateMonster($id){
+        $list = $this->modelCategoria->getList();
+        $Monster = $this->modelMonstruo->inspectMonster($id);
+        $this->view->showAdminUpdateMonster($Monster, $list);
+
+    }
+    public function getUpdateCategorie($id){
+        $Categorie = $this->modelCategoria->inspectCategorie($id);
+        $this->view->showAdminUpdateCategorie($Categorie);
+    }
+
+    public function inspectMonster($id){
+        $Monster = $this->modelMonstruo->inspectMonster($id);
+        $this->view->showMonsterList($Monster);
+
+    }
+    public function inspectCategorie($id){
+        $Categorie = $this->modelCategoria->inspectCategorie($id);
+        $this->view->showMonsterList($Categorie);
+    }
+
+    public function actualizaMonstruo($id){
+        $nombre = $_REQUEST['nombre'];
+        $debilidad = $_REQUEST['debilidad'];
+        $descripcion = $_REQUEST['descripcion'];
+        $id_Categoria_fk = $_REQUEST['categoria'];
+
+        $this->modelMonstruo->updateMonster($nombre, $debilidad, $descripcion, $id_Categoria_fk, $id);
+        header("Location: " . BASE_URL); 
+    }
+    public function actualizaCategoria($id){
+        $nombre = $_REQUEST['nombre'];
+        $descripcion = $_REQUEST['descripcion'];
+
+        $this->modelCategoria->updateCategorie($nombre, $descripcion, $id);
         header("Location: " . BASE_URL_CAT); 
     }
 }

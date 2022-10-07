@@ -30,5 +30,18 @@
             $query->execute([$nombreCategoria]);
             return $query->fetchAll(PDO::FETCH_OBJ);
         }
+
+        public function updateMonster($nombre, $debilidad, $descripcion, $id_Categoria_fk, $id){
+            $query = $this->db->prepare('UPDATE Monstruo SET nombre=?, debilidad=?, descripcion=?, id_Categoria_fk=? WHERE id=?');
+            $query->execute([$nombre, $debilidad, $descripcion, $id_Categoria_fk, $id]);
+        }
+
+        public function inspectMonster($id){
+            $query = $this->db->prepare('SELECT Monstruo.id, Monstruo.nombre, Monstruo.debilidad, Monstruo.descripcion, Categoria.nombre as nombre2
+                                        FROM Monstruo
+                                        INNER JOIN Categoria ON (Monstruo.id_Categoria_fk=Categoria.id) WHERE Monstruo.id = (?)');
+            $query->execute([$id]);
+            return $query->fetchAll(PDO::FETCH_OBJ); 
+        }
     }
 ?>

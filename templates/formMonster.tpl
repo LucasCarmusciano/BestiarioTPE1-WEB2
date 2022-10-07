@@ -1,22 +1,25 @@
 {include file="header.tpl"}
 
-<form action="insertMonster" method="post">
+<form action="{$action}/{$Monster[0]->id}" method="post">
     <div class="mb-3">
         <label class="form-label">Nombre</label>
-        <input class="form-control" id="exampleFormControlInput1" name="nombre">
+        <input class="form-control" id="exampleFormControlInput1" value="{$Monster[0]->nombre}" name="nombre">
     </div>
     <div class="mb-3">
         <label class="form-label">Debilidad</label>
-        <input class="form-control" id="exampleFormControlInput1" name="debilidad">
+        <input class="form-control" id="exampleFormControlInput1" value="{$Monster[0]->debilidad}" name="debilidad">
     </div>
     <div class="mb-3">
         <label class="form-label">Descripcion</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" rows="3"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" rows="3">{$Monster[0]->descripcion}</textarea>
     </div>
     <select name="categoria" class="form-select" aria-label="Default select example">
-        <option selected>-Categoria-</option>
             {foreach from=$categories item=$categoria}
-                <option value={$categoria->id}>{$categoria->nombre}</option>
+                {if $categoria->nombre==$Monster[0]->nombre2}
+                    <option selected value={$categoria->id}>{$categoria->nombre}</option>
+                {else}
+                    <option value={$categoria->id}>{$categoria->nombre}</option>
+                {/if}
             {/foreach}
     </select>
     <div class="d-grid gap-2 col-6 mx-auto">
