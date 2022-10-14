@@ -1,5 +1,6 @@
 <?php
 require_once './app/Controllers/Bestiario.Controller.php';
+require_once './app/Controllers/Session.Controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 define('BASE_URL_CAT', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/categories');
@@ -7,17 +8,19 @@ define('BASE_URL_ADMIN', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_P
 
 
 if($_GET['action']==''){
-    // $action='home';
-    $action='list';
+    $action='login';
 }else{
     $action = $_GET['action'];
 }
 
 $Bcontroller = new BestiarioController();
-// $Scontroller = new SessionController();
+$Scontroller = new SessionController();
 
 $parse = explode('/',$action);
 switch($parse[0]){
+    case 'login':
+        $Scontroller->showLogin();
+        break;
     case 'list':
         $Bcontroller->getList();
         break;
