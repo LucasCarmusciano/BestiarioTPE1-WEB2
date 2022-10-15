@@ -21,6 +21,9 @@ switch($parse[0]){
     case 'login':
         $Scontroller->showLogin();
         break;
+    case 'verifyLogin':
+        $Scontroller->verifyLogin();
+        break;
     case 'list':
         $Bcontroller->getList();
         break;
