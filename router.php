@@ -1,6 +1,7 @@
 <?php
 require_once './app/Controllers/Bestiario.Controller.php';
 require_once './app/Controllers/Session.Controller.php';
+require_once './app/Controllers/Admin.Controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 define('BASE_URL_CAT', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/categories');
@@ -8,42 +9,28 @@ define('BASE_URL_ADMIN', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_P
 
 
 if($_GET['action']==''){
-    $action='login';
+    $action='list';
 }else{
     $action = $_GET['action'];
 }
 
 $Bcontroller = new BestiarioController();
-$Scontroller = new SessionController();
+$SessionController = new SessionController();
+$AdminController = new AdminController();
 
 $parse = explode('/',$action);
 switch($parse[0]){
     case 'login':
-        $Scontroller->showLogin();
+        $SessionController->showLogin();
+        break;
+    case 'logout':
+        $SessionController->logout();
         break;
     case 'verifyLogin':
-        $Scontroller->verifyLogin();
+        $SessionController->verifyLogin();
         break;
     case 'list':
         $Bcontroller->getList();
-        break;
-    case 'insertMonster':
-        $Bcontroller->insertMonsterList();
-        break;
-    case 'insertCategories':
-        $Bcontroller->insertCategoriesList();
-        break;
-    case 'addMonster':
-        $Bcontroller->getAddMonster();
-        break;
-    case 'addCategorie':
-        $Bcontroller->getAddCategorie();
-        break;
-    case 'deleteMonster':
-        $Bcontroller->deleteMonsterList($parse[1]);
-        break;
-    case 'deleteCategorie':
-        $Bcontroller->deleteCategoriesList($parse[1]);
         break;
     case 'categories':
         if($parse[1]==''){
@@ -52,20 +39,38 @@ switch($parse[0]){
         $Bcontroller->getFilterList($parse[1]);
         }
         break;
+    case 'insertMonster':
+        $AdminController->insertMonsterList();
+        break;
+    case 'insertCategories':
+        $AdminController->insertCategoriesList();
+        break;
+    case 'addMonster':
+        $AdminController->getAddMonster();
+        break;
+    case 'addCategorie':
+        $AdminController->getAddCategorie();
+        break;
+    case 'deleteMonster':
+        $AdminController->deleteMonsterList($parse[1]);
+        break;
+    case 'deleteCategorie':
+        $AdminController->deleteCategoriesList($parse[1]);
+        break;
     case 'admin':
-        $Bcontroller->getAdminList();
+        $AdminController->getAdminList();
         break;
     case 'updateMonster':
-        $Bcontroller->getUpdateMonster($parse[1]);
+        $AdminController->getUpdateMonster($parse[1]);
         break;
     case 'updateCategorie':
-        $Bcontroller->getUpdateCategorie($parse[1]);
+        $AdminController->getUpdateCategorie($parse[1]);
         break;
     case 'actualizaMonstruo':
-        $Bcontroller->actualizaMonstruo($parse[1]);
+        $AdminController->actualizaMonstruo($parse[1]);
         break;
     case 'actualizaCategoria':
-        $Bcontroller->actualizaCategoria($parse[1]);
+        $AdminController->actualizaCategoria($parse[1]);
         break;
     default:
         echo('404 Page not found');

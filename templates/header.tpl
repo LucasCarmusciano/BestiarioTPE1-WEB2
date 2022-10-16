@@ -35,17 +35,27 @@
                         <li class="nav-item">
                             <a class="nav-link" href="categories">Categorias</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="admin">Administrar</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Agregar
-                            </a>
-                            <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="addMonster">Monstruo</a></li>
-                            <li><a class="dropdown-item" href="addCategorie">Categoria</a></li>
-                        </li>
+                        {if !isset($smarty.session.id)}
+                            <li class="nav-item">
+                                <a class="nav-link" href="login">Iniciar Sesión</a>
+                            </li>
+                        {else}
+                            <li class="nav-item">
+                                <a class="nav-link" href="admin">Administrar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="logout">Cerrar Sesión</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Agregar
+                                </a>
+                                <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="addMonster">Monstruo</a></li>
+                                <li><a class="dropdown-item" href="addCategorie">Categoria</a></li>
+                            </li>
+                        {/if}
+                        
                         </ul>
                     </div>
                     </div>

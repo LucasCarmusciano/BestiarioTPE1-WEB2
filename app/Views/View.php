@@ -30,7 +30,7 @@ class View {
             $this->smarty->display('formMonster.tpl');
         }
         public function showAdminAddCategorie(){
-            $this->smarty->assign('action','insterCategories');
+            $this->smarty->assign('action','insertCategories');
             $this->smarty->display('formCategorie.tpl');
         }
 
