@@ -35,7 +35,14 @@ class AdminController{
         $descripcion = $_REQUEST['descripcion'];
         $id_Categoria_fk = $_REQUEST['categoria'];
 
-        $this->modelMonstruo->insertList($nombre, $debilidad, $descripcion, $id_Categoria_fk);
+        if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" 
+                    || $_FILES['imagen']['type'] == "image/png" ) {
+            $imagen = $_FILES['imagen']['tmp_name'];
+            $this->modelMonstruo->insertList($nombre, $debilidad, $descripcion, $id_Categoria_fk, $imagen);
+        }
+        else {
+            $this->modelMonstruo->insertList($nombre, $debilidad, $descripcion, $id_Categoria_fk);
+        }
         header("Location: " . BASE_URL); 
     }
     public function insertCategoriesList(){
@@ -79,18 +86,6 @@ class AdminController{
         $this->secured->validate();
         $Categorie = $this->modelCategoria->inspectCategorie($id);
         $this->view->showAdminUpdateCategorie($Categorie);
-    }
-
-    public function inspectMonster($id){
-        $this->secured->validate();
-        $Monster = $this->modelMonstruo->inspectMonster($id);
-        $this->view->showMonsterList($Monster);
-
-    }
-    public function inspectCategorie($id){
-        $this->secured->validate();
-        $Categorie = $this->modelCategoria->inspectCategorie($id);
-        $this->view->showMonsterList($Categorie);
     }
 
     public function actualizaMonstruo($id){

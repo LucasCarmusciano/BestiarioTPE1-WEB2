@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 
-<form action="{$action}/{$Monster[0]->id}" method="post">
+<form action="{$action}/{$Monster[0]->id}" method="post"  enctype="multipart/form-data">
     <div class="mb-3">
         <label class="form-label">Nombre</label>
         <input class="form-control" id="exampleFormControlInput1" value="{$Monster[0]->nombre}" name="nombre">
@@ -22,6 +22,9 @@
                 {/if}
             {/foreach}
     </select>
+    <div class="form-group">
+        <input type="file" name="imagen" id="imageToUpload">
+    </div>
     <div class="d-grid gap-2 col-6 mx-auto">
         <button class="btn btn-primary" type="submit">Enviar</button>
     </div>

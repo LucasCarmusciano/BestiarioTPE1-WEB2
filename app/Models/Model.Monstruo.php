@@ -14,9 +14,13 @@
             return $query->fetchAll(PDO::FETCH_OBJ);
         }
         
-        public function insertList($nombre, $debilidad, $descripcion, $id_Categoria_fk){
-            $query = $this->db->prepare('INSERT INTO Monstruo(nombre,debilidad, descripcion, id_Categoria_fk) VALUES (?,?,?,?)');
-            $query->execute([$nombre, $debilidad, $descripcion, $id_Categoria_fk]);
+        public function insertList($nombre, $debilidad, $descripcion, $id_Categoria_fk, $imagen= null){
+            $pathImg = null;
+            if ($imagen){
+                $pathImg = $this->uploadImage($imagen);
+            }
+            $query = $this->db->prepare('INSERT INTO Monstruo(nombre,debilidad, descripcion, id_Categoria_fk, imagen) VALUES (?,?,?,?,?)');
+            $query->execute([$nombre, $debilidad, $descripcion, $id_Categoria_fk, $pathImg]);
         }
         
         public function deleteList($id){
@@ -37,11 +41,18 @@
         }
 
         public function inspectMonster($id){
-            $query = $this->db->prepare('SELECT Monstruo.id, Monstruo.nombre, Monstruo.debilidad, Monstruo.descripcion, Categoria.nombre as nombre2
+            $query = $this->db->prepare('SELECT Monstruo.id, Monstruo.nombre, Monstruo.debilidad, Monstruo.descripcion, Categoria.nombre as nombre2, Monstruo.imagen
                                         FROM Monstruo
                                         INNER JOIN Categoria ON (Monstruo.id_Categoria_fk=Categoria.id) WHERE Monstruo.id = (?)');
             $query->execute([$id]);
             return $query->fetch(PDO::FETCH_OBJ); 
         }
+
+        private function uploadImage($imagen){
+            $target = './images/' . uniqid() . '.jpg';
+            move_uploaded_file($imagen, $target);
+            return $target;
+        }
+    
     }
 ?>
