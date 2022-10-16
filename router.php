@@ -36,8 +36,11 @@ switch($parse[0]){
         if($parse[1]==''){
             $Bcontroller->getCategoriesList();
         }else{
-        $Bcontroller->getFilterList($parse[1]);
+            $Bcontroller->getFilterList($parse[1]);
         }
+        break;
+    case 'inspect':
+        $Bcontroller->inspectMonster($parse[1]);
         break;
     case 'insertMonster':
         $AdminController->insertMonsterList();

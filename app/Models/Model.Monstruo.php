@@ -41,7 +41,7 @@
                                         FROM Monstruo
                                         INNER JOIN Categoria ON (Monstruo.id_Categoria_fk=Categoria.id) WHERE Monstruo.id = (?)');
             $query->execute([$id]);
-            return $query->fetchAll(PDO::FETCH_OBJ); 
+            return $query->fetch(PDO::FETCH_OBJ); 
         }
     }
 ?>

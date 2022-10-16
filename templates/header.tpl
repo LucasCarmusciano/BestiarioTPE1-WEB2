@@ -15,7 +15,7 @@
     <title>Bestiario - The Witcher</title>
 </head>
 <body>
-    <header style="margin-top: 55px;">
+    <header style="margin-top: 70px;">
             <nav class="navbar bg-light fixed-top">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">Bestiario - The Witcher</a>

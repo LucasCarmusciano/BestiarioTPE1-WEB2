@@ -28,5 +28,10 @@ class BestiarioController {
         $FilterList = $this->modelMonstruo->getFilterList($nombreCategoria);
         $this->view->showMonsterList($FilterList);
     }
+    
+    public function inspectMonster($id){
+        $monster = $this->modelMonstruo->inspectMonster($id);
+        $this->view->showOneMonster($monster);
+    }
 }
 ?>

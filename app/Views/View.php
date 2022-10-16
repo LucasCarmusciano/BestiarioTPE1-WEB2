@@ -45,5 +45,10 @@ class View {
             $this->smarty->assign('Categorie',$Categorie);
             $this->smarty->display('formCategorie.tpl');
         }
+
+        public function showOneMonster($monster){
+            $this->smarty->assign('Monster',$monster);
+            $this->smarty->display('inspectedMonster.tpl');
+        }
     }
 ?>
