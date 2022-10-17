@@ -25,25 +25,21 @@ class View {
         }
 
         public function showAdminAddMonster($categories){
-            $this->smarty->assign('action','insertMonster');
             $this->smarty->assign('categories',$categories);
             $this->smarty->display('formMonster.tpl');
         }
         public function showAdminAddCategorie(){
-            $this->smarty->assign('action','insertCategories');
             $this->smarty->display('formCategorie.tpl');
         }
 
         public function showAdminUpdateMonster($Monster, $categories){
-            $this->smarty->assign('action','actualizaMonstruo');
             $this->smarty->assign('categories',$categories);
             $this->smarty->assign('Monster',$Monster);
-            $this->smarty->display('formMonster.tpl');
+            $this->smarty->display('editMonster.tpl');
         }
         public function showAdminUpdateCategorie($Categorie){
-            $this->smarty->assign('action','actualizaCategoria');
             $this->smarty->assign('Categorie',$Categorie);
-            $this->smarty->display('formCategorie.tpl');
+            $this->smarty->display('editCategorie.tpl');
         }
 
         public function showOneMonster($monster){
