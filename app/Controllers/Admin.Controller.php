@@ -95,7 +95,14 @@ class AdminController{
         $descripcion = $_REQUEST['descripcion'];
         $id_Categoria_fk = $_REQUEST['categoria'];
 
-        $this->modelMonstruo->updateMonster($nombre, $debilidad, $descripcion, $id_Categoria_fk, $id);
+        if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" 
+            || $_FILES['imagen']['type'] == "image/png" ) {
+        $this->modelMonstruo->updateMonster($nombre, $debilidad, $descripcion, $id_Categoria_fk, $id, $_FILES['imagen']['tmp_name']);
+        }
+        else {
+            $this->modelMonstruo->updateMonster($nombre, $debilidad, $descripcion, $id_Categoria_fk, $id);
+        }
+
         header("Location: " . BASE_URL); 
     }
     public function actualizaCategoria($id){

@@ -35,9 +35,13 @@
             return $query->fetchAll(PDO::FETCH_OBJ);
         }
 
-        public function updateMonster($nombre, $debilidad, $descripcion, $id_Categoria_fk, $id){
-            $query = $this->db->prepare('UPDATE Monstruo SET nombre=?, debilidad=?, descripcion=?, id_Categoria_fk=? WHERE id=?');
-            $query->execute([$nombre, $debilidad, $descripcion, $id_Categoria_fk, $id]);
+        public function updateMonster($nombre, $debilidad, $descripcion, $id_Categoria_fk, $id, $imagen= null){
+            $pathImg = null;
+            if ($imagen){
+                $pathImg = $this->uploadImage($imagen);
+            }
+            $query = $this->db->prepare('UPDATE Monstruo SET nombre=?, debilidad=?, descripcion=?, id_Categoria_fk=?, imagen=? WHERE id=?');
+            $query->execute([$nombre, $debilidad, $descripcion, $id_Categoria_fk, $pathImg, $id]);
         }
 
         public function inspectMonster($id){
