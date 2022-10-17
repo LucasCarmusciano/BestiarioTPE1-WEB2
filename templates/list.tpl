@@ -14,7 +14,7 @@
         <tbody>
             <tr>
                 <th class="align-middle" scope="row">{$monster->nombre}</th>
-                <td class="align-middle">{$monster->descripcion}</td>
+                <td class="align-middle text-truncate" style="max-width: 150px;">{$monster->descripcion}</td>
                 <td class="align-middle">{$monster->nombre2}</td>
                 <td class="align-middle">
                     <form action="inspect/{$monster->id}" method="POST">

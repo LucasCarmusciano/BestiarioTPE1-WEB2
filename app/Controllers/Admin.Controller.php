@@ -35,10 +35,10 @@ class AdminController{
         $descripcion = $_REQUEST['descripcion'];
         $id_Categoria_fk = $_REQUEST['categoria'];
 
+
         if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" 
                     || $_FILES['imagen']['type'] == "image/png" ) {
-            $imagen = $_FILES['imagen']['tmp_name'];
-            $this->modelMonstruo->insertList($nombre, $debilidad, $descripcion, $id_Categoria_fk, $imagen);
+            $this->modelMonstruo->insertList($nombre, $debilidad, $descripcion, $id_Categoria_fk, $_FILES['imagen']['tmp_name']);
         }
         else {
             $this->modelMonstruo->insertList($nombre, $debilidad, $descripcion, $id_Categoria_fk);

@@ -1,21 +1,21 @@
 {include file="header.tpl"}
 
-<form action="{$action}/{$Monster[0]->id}" method="post"  enctype="multipart/form-data">
+<form action="{$action}/{$Monster->id}" method="post"  enctype="multipart/form-data">
     <div class="mb-3">
         <label class="form-label">Nombre</label>
-        <input class="form-control" id="exampleFormControlInput1" value="{$Monster[0]->nombre}" name="nombre">
+        <input class="form-control" id="exampleFormControlInput1" value="{$Monster->nombre}" name="nombre">
     </div>
     <div class="mb-3">
         <label class="form-label">Debilidad</label>
-        <input class="form-control" id="exampleFormControlInput1" value="{$Monster[0]->debilidad}" name="debilidad">
+        <input class="form-control" id="exampleFormControlInput1" value="{$Monster->debilidad}" name="debilidad">
     </div>
     <div class="mb-3">
         <label class="form-label">Descripcion</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" rows="3">{$Monster[0]->descripcion}</textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" rows="3">{$Monster->descripcion}</textarea>
     </div>
     <select name="categoria" class="form-select" aria-label="Default select example">
             {foreach from=$categories item=$categoria}
-                {if $categoria->nombre==$Monster[0]->nombre2}
+                {if $categoria->nombre==$Monster->nombre2}
                     <option selected value={$categoria->id}>{$categoria->nombre}</option>
                 {else}
                     <option value={$categoria->id}>{$categoria->nombre}</option>
